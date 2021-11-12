@@ -1,0 +1,10 @@
+.logo__image {
+  max-width: 2em;
+  margin: 0em 0.5em;
+}
+
+.logo__title {
+  width: 9em;
+  text-align: center;
+  color: white;
+}
