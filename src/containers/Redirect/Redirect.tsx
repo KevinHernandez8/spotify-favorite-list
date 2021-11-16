@@ -1,12 +1,18 @@
 /* eslint-disable no-restricted-globals */
+import { CircularProgress } from '@mui/material'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { doSetAccessToken } from '../../actions/user'
+import { getUserInfo } from '../../api/api'
+import { Routes } from '../../constants'
 import { RootReducer } from '../../store/store'
+import styles from './Redirect.module.css'
 
 export default function Redirect() {
-  const { access_token } = useSelector((state: RootReducer) => state.user)
+  const { access_token, isLogged } = useSelector(
+    (state: RootReducer) => state.user
+  )
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -23,11 +29,19 @@ export default function Redirect() {
 
   useEffect(() => {
     if (access_token !== '') {
-      // TODO: Call API to get user info using access_token
-      // TODO: Store response information to log in the user
-      // TODO: Once user info is complete, redirect to Home
+      getUserInfo(access_token)
     }
   }, [access_token])
 
-  return <h1>Hola</h1>
+  useEffect(() => {
+    if (isLogged) {
+      navigate(Routes.HOME)
+    }
+  }, [isLogged])
+
+  return (
+    <div className={styles.redirect__loader}>
+      <CircularProgress size="5em" />
+    </div>
+  )
 }

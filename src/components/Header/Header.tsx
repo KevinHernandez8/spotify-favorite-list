@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { Button, Menu, MenuItem } from '@mui/material'
 import { ExpandLess, ExpandMore, Logout, Star } from '@mui/icons-material'
 import { Routes } from '../../constants'
+import { doLogoutUser } from '../../actions/user'
+import { RootReducer } from '../../store/store'
 import Logo from '../Logo'
 import styles from './Header.module.css'
 
@@ -11,9 +14,11 @@ type HeaderProps = {
 }
 
 export default function Header({ userName }: HeaderProps) {
+  const { isLogged } = useSelector((state: RootReducer) => state.user)
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const isOpenMenu = !!anchorEl
-  const navigator = useNavigate()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   function handleClickButton(event: React.MouseEvent<HTMLButtonElement>) {
     setAnchorEl(event.currentTarget)
@@ -24,16 +29,22 @@ export default function Header({ userName }: HeaderProps) {
   }
 
   function handleClickLogo() {
-    navigator(Routes.HOME)
+    navigate(Routes.HOME)
   }
 
   function handleClickFavorites() {
-    navigator(Routes.FAVORITES)
+    navigate(Routes.FAVORITES)
   }
 
   function handleClickLogout() {
-    console.log('Logout')
+    dispatch(doLogoutUser())
   }
+
+  useEffect(() => {
+    if (!isLogged) {
+      navigate(Routes.LOGIN)
+    }
+  }, [isLogged])
 
   return (
     <header className={styles.header__container}>
