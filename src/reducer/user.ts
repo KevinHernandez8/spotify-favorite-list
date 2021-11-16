@@ -32,7 +32,7 @@ export default function user(
       }
     case LOGOUT_USER:
       return {
-        initialState,
+        ...initialState,
       }
     default:
       return state
