@@ -1,3 +1,5 @@
+import { UserInformationPayload } from '../models'
+
 export const SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN'
 export const SET_USER_INFORMATION = 'SET_USER_INFORMATION'
 export const LOGOUT_USER = 'LOGOUT_USER'
@@ -17,10 +19,7 @@ export function doSetAccessToken(payload: string) {
  * Set the user information from API response
  * @param payload id, display_name from the user
  */
-export function doSetUserInformation(payload: {
-  id: string
-  display_name: string
-}) {
+export function doSetUserInformation(payload: UserInformationPayload) {
   return {
     type: SET_USER_INFORMATION,
     payload,

@@ -1,13 +1,24 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
+import { persistReducer } from 'redux-persist'
 import thunk from 'redux-thunk'
+import storage from 'redux-persist/lib/storage'
 import userReducer from '../reducer/user'
+import albumReducer from '../reducer/album'
+
+const persistConfig = {
+  key: 'root',
+  storage,
+}
 
 const rootReducer = combineReducers({
   user: userReducer,
+  album: albumReducer,
 })
 type RootReducer = ReturnType<typeof rootReducer>
 
-const store = createStore(rootReducer, compose(applyMiddleware(thunk)))
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+const store = createStore(persistedReducer, compose(applyMiddleware(thunk)))
 
 export default store
 export type { RootReducer }

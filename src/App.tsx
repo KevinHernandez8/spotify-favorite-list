@@ -1,5 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
+import { persistStore } from 'redux-persist'
+import { PersistGate } from 'redux-persist/integration/react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { createTheme } from '@mui/material'
 import { ThemeProvider } from '@emotion/react'
@@ -24,20 +26,24 @@ const darkTheme = createTheme({
   },
 })
 
+const persistor = persistStore(store)
+
 function App() {
   return (
     <Provider store={store}>
-      <ThemeProvider theme={darkTheme}>
-        <BrowserRouter>
-          <Routes>
-            <Route path={Paths.HOME} element={<Home />} />
-            <Route path={Paths.LOGIN} element={<Login />} />
-            <Route path={Paths.REDIRECT} element={<Redirect />} />
-            <Route path={Paths.SIGNUP} element={<SignUp />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider theme={darkTheme}>
+          <BrowserRouter>
+            <Routes>
+              <Route path={Paths.HOME} element={<Home />} />
+              <Route path={Paths.LOGIN} element={<Login />} />
+              <Route path={Paths.REDIRECT} element={<Redirect />} />
+              <Route path={Paths.SIGNUP} element={<SignUp />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </ThemeProvider>
+      </PersistGate>
     </Provider>
   )
 }
