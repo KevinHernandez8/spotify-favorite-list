@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux'
 import { AlbumPayload } from '../models'
-import { SET_ALBUMS, RESET_ALBUMS } from '../actions/album'
+import { SET_ALBUMS, RESET_ALBUMS, LOAD_MORE_ALBUMS } from '../actions/album'
 
 const initialState: AlbumPayload = {
   href: '',
@@ -22,8 +22,14 @@ export default function album(
         ...state,
         ...action.payload,
       }
+    case LOAD_MORE_ALBUMS:
+      return {
+        ...state,
+        items: [...state.items, ...action.payload.items],
+        next: action.payload.next,
+      }
     case RESET_ALBUMS:
-      return initialState
+      return { ...initialState }
     default:
       return state
   }

@@ -4,6 +4,7 @@ import thunk from 'redux-thunk'
 import storage from 'redux-persist/lib/storage'
 import userReducer from '../reducer/user'
 import albumReducer from '../reducer/album'
+import trackReducer from '../reducer/track'
 
 const persistConfig = {
   key: 'root',
@@ -13,6 +14,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   album: albumReducer,
+  track: trackReducer,
 })
 type RootReducer = ReturnType<typeof rootReducer>
 

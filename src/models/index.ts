@@ -4,6 +4,8 @@ import AlbumPayload from './AlbumPayload'
 import Album from './Album'
 import Image from './Image'
 import Artist from './Artist'
+import TrackPayload from './TrackPayload'
+import Track from './Track'
 
 export type {
   UserState,
@@ -12,4 +14,6 @@ export type {
   Album,
   Image,
   Artist,
+  TrackPayload,
+  Track,
 }

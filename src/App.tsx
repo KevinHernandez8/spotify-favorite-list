@@ -10,6 +10,7 @@ import Home from './containers/Home'
 import Login from './containers/Login'
 import Redirect from './containers/Redirect'
 import SignUp from './containers/SignUp'
+import AlbumDetail from './containers/AlbumDetail'
 import store from './store/store'
 import './App.css'
 
@@ -39,6 +40,9 @@ function App() {
               <Route path={Paths.LOGIN} element={<Login />} />
               <Route path={Paths.REDIRECT} element={<Redirect />} />
               <Route path={Paths.SIGNUP} element={<SignUp />} />
+              <Route path={Paths.ALBUM}>
+                <Route path=":albumId" element={<AlbumDetail />} />
+              </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

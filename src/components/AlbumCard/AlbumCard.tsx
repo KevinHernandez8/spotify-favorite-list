@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router'
 import {
   Card,
   CardActionArea,
@@ -6,18 +7,31 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material'
+import { Routes } from '../../constants'
 import { Artist } from '../../models'
 
 type AlbumCardProps = {
+  albumId: string
   imageUrl: string
   name: string
   artists: Artist[]
 }
 
-export default function AlbumCard({ imageUrl, name, artists }: AlbumCardProps) {
+export default function AlbumCard({
+  albumId,
+  imageUrl,
+  name,
+  artists,
+}: AlbumCardProps) {
+  const navigate = useNavigate()
+
+  function handleClickAlbum() {
+    navigate(`${Routes.ALBUM}/${albumId}`)
+  }
+
   return (
     <Card sx={{ maxWidth: 320 }}>
-      <CardActionArea>
+      <CardActionArea onClick={handleClickAlbum}>
         <CardMedia component="img" height={320} image={imageUrl} alt={name} />
         <CardContent>
           <Typography gutterBottom variant="h6">

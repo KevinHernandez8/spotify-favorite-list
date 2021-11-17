@@ -4,6 +4,7 @@ const Routes = {
   SIGNUP: '/sign-up',
   FAVORITES: '/my-favorites',
   REDIRECT: '/redirect',
+  ALBUM: '/album',
 }
 
 export default Routes

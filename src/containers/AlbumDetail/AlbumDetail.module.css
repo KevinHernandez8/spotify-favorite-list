@@ -1,0 +1,13 @@
+.albumDetail__image {
+  max-width: 100%;
+}
+
+.albumDetail__title {
+  align-self: center;
+}
+
+.albumDetail__customRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
