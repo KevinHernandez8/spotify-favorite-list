@@ -4,9 +4,8 @@ import { useNavigate } from 'react-router'
 import { Button, Menu, MenuItem } from '@mui/material'
 import { ExpandLess, ExpandMore, Logout, Star } from '@mui/icons-material'
 import { Routes } from '../../constants'
-import { doLogoutUser } from '../../actions/user'
-import { doResetAlbums } from '../../actions/album'
 import { RootReducer } from '../../store/store'
+import clearStorage from '../../utils/clearStorage'
 import Logo from '../Logo'
 import styles from './Header.module.css'
 
@@ -38,9 +37,7 @@ export default function Header({ userName }: HeaderProps) {
   }
 
   function handleClickLogout() {
-    dispatch(doLogoutUser())
-    dispatch(doResetAlbums())
-    localStorage.clear()
+    clearStorage(dispatch)
   }
 
   useEffect(() => {
