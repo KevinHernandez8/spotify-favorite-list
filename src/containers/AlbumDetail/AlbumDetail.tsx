@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo } from 'react'
-import moment from 'moment'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import {
@@ -18,6 +17,7 @@ import {
   IconButton,
 } from '@mui/material'
 import { AccessTime, Favorite, FavoriteBorder } from '@mui/icons-material'
+import getFormatedTime from '../../utils/getFormatedTime'
 import { doResetTracks } from '../../actions/track'
 import { getAlbumTracks } from '../../api/api'
 import { RootReducer } from '../../store/store'
@@ -35,15 +35,6 @@ export default function AlbumDetail() {
   )
   const params = useParams()
   const dispatch = useDispatch()
-
-  /**
-   * Receive the song's time in milliseconds and transform it in a better format
-   * @param time song's time in milliseconds
-   * @returns formatted time in this form '04:55'
-   */
-  function getFormattedTime(time: number) {
-    return moment(time).format('mm:ss')
-  }
 
   useEffect(() => {
     getAlbumTracks(params.albumId || '', access_token)
@@ -118,7 +109,7 @@ export default function AlbumDetail() {
                       </div>
                     </TableCell>
                     <TableCell align="center">
-                      {getFormattedTime(track.duration_ms)}
+                      {getFormatedTime(track.duration_ms)}
                     </TableCell>
                   </TableRow>
                 ))}
