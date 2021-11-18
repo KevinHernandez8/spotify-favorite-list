@@ -21,3 +21,18 @@
   align-items: center;
   justify-content: space-between;
 }
+
+@media screen and (max-width: 426px) {
+  .favorite__head {
+    flex-direction: column;
+  }
+
+  .favorites__image_container,
+  .favorites__title {
+    text-align: center;
+  }
+
+  .favorites__albumImage {
+    display: none;
+  }
+}

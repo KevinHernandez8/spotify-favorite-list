@@ -8,4 +8,19 @@
 
   /* CSS Colors */
   --main-black: #121212;
+  --main-green: #10bc4c;
+  --darker-green: #12923f;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-green);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--darker-green);
 }

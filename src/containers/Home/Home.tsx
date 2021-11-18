@@ -41,7 +41,7 @@ export default function Home() {
       <CssBaseline />
       <Header userName={display_name} />
       <Container maxWidth="md" sx={{ paddingBottom: '1em' }}>
-        <Typography variant="h3" sx={{ padding: '0.5em 0em' }}>
+        <Typography variant="h4" sx={{ padding: '0.5em 0em' }}>
           Nuevos lanzamientos
         </Typography>
         {items.length === 0 ? (
@@ -50,7 +50,7 @@ export default function Home() {
           <>
             <Grid container spacing={2}>
               {items.map((album: Album, index: number) => (
-                <Grid key={index} item xs={4}>
+                <Grid key={index} item lg={4} md={4} sm={4} xs={12}>
                   <AlbumCard
                     albumId={album.id}
                     imageUrl={album.images[0].url}

@@ -91,15 +91,22 @@ export default function AlbumDetail() {
       {tracks.length === 0 && error && <NotFound />}
       {tracks.length > 0 && (
         <Container maxWidth="md" sx={{ padding: '1em' }}>
-          <Grid container spacing={2}>
-            <Grid item xs={4}>
+          <Grid container spacing={2} className={styles.albumDetail__head}>
+            <Grid item lg={4} md={4} sm={4} xs={12}>
               <img
                 className={styles.albumDetail__image}
                 src={currentAlbum?.images[0].url}
                 alt="album_img"
               />
             </Grid>
-            <Grid item xs={8} className={styles.albumDetail__title}>
+            <Grid
+              item
+              lg={8}
+              md={8}
+              sm={8}
+              xs={12}
+              className={styles.albumDetail__title}
+            >
               <Typography variant="h3" gutterBottom>
                 {currentAlbum?.name}
               </Typography>

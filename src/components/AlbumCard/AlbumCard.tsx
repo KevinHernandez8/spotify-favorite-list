@@ -30,7 +30,7 @@ export default function AlbumCard({
   }
 
   return (
-    <Card sx={{ maxWidth: 320 }}>
+    <Card>
       <CardActionArea onClick={handleClickAlbum}>
         <CardMedia component="img" height={320} image={imageUrl} alt={name} />
         <CardContent>

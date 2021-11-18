@@ -51,15 +51,29 @@ export default function Favorites() {
       {items.length === 0 && <CircularProgress size="3em" />}
       {items.length > 0 && (
         <Container maxWidth="md" sx={{ padding: '1em' }}>
-          <Grid container spacing={2}>
-            <Grid item xs={4}>
+          <Grid container spacing={2} className={styles.favorites__head}>
+            <Grid
+              className={styles.favorites__image_container}
+              item
+              lg={4}
+              md={4}
+              sm={4}
+              xs={12}
+            >
               <img
                 className={styles.favorites__image}
                 src={FavoritesImage}
                 alt="favorites_icon"
               />
             </Grid>
-            <Grid className={styles.favorites__title} item xs={8}>
+            <Grid
+              className={styles.favorites__title}
+              item
+              lg={8}
+              md={8}
+              sm={8}
+              xs={12}
+            >
               <Typography variant="h3" gutterBottom>
                 Tus Favoritos
               </Typography>
