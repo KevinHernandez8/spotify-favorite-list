@@ -6,6 +6,9 @@ import Image from './Image'
 import Artist from './Artist'
 import TrackPayload from './TrackPayload'
 import Track from './Track'
+import FavoritePayload from './FavoritePayload'
+import Favorite from './Favorite'
+import FavoriteTrack from './FavoriteTrack'
 
 export type {
   UserState,
@@ -16,4 +19,7 @@ export type {
   Artist,
   TrackPayload,
   Track,
+  FavoritePayload,
+  Favorite,
+  FavoriteTrack,
 }

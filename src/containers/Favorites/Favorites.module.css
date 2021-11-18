@@ -1,0 +1,23 @@
+.favorites__image {
+  max-width: 100%;
+}
+
+.favorites__title {
+  align-self: center;
+}
+
+.favorites__rowTitle {
+  display: flex;
+  align-items: center;
+}
+
+.favorites__albumImage {
+  max-width: 3em;
+  margin-right: 0.5em;
+}
+
+.favorites__rowAlbum {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

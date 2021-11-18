@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -19,7 +20,7 @@ import {
 import { AccessTime, Favorite, FavoriteBorder } from '@mui/icons-material'
 import getFormatedTime from '../../utils/getFormatedTime'
 import { doResetTracks } from '../../actions/track'
-import { getAlbumTracks } from '../../api/api'
+import { addFavorite, getAlbumTracks, removeFavorite } from '../../api/api'
 import { RootReducer } from '../../store/store'
 import { Header, NotFound } from '../../components'
 import { Album, Artist, Track } from '../../models'
@@ -35,6 +36,18 @@ export default function AlbumDetail() {
   )
   const params = useParams()
   const dispatch = useDispatch()
+
+  function handleClickFavorite(
+    trackId: string,
+    trackIndex: number,
+    isFavorite: boolean
+  ) {
+    if (isFavorite) {
+      removeFavorite(access_token, trackId, trackIndex, true)
+    } else {
+      addFavorite(access_token, trackId, trackIndex)
+    }
+  }
 
   useEffect(() => {
     getAlbumTracks(params.albumId || '', access_token)
@@ -102,9 +115,20 @@ export default function AlbumDetail() {
                     <TableCell>
                       <div className={styles.albumDetail__customRow}>
                         {track.name}
-                        <IconButton>
-                          <FavoriteBorder />
-                          {/* <Favorite color="success" /> */}
+                        <IconButton
+                          onClick={() =>
+                            handleClickFavorite(
+                              track.id,
+                              index,
+                              track.is_favorite
+                            )
+                          }
+                        >
+                          {track.is_favorite ? (
+                            <Favorite color="success" />
+                          ) : (
+                            <FavoriteBorder />
+                          )}
                         </IconButton>
                       </div>
                     </TableCell>

@@ -26,7 +26,10 @@ export default function Login() {
     //   email: data.get('email'),
     //   password: data.get('password'),
     // })
-    window.location.href = `${authorizeUrl}?client_id=${clientId}&redirect_uri=${redirectUrl}&response_type=token&show_dialog=true`
+  }
+
+  function handleLoginSpotify() {
+    window.location.href = `${authorizeUrl}?client_id=${clientId}&redirect_uri=${redirectUrl}&response_type=token&show_dialog=true&scope=user-library-modify user-library-read`
   }
 
   function handleSignUp() {
@@ -98,6 +101,15 @@ export default function Login() {
               sx={{ mt: 3, mb: 2 }}
             >
               Ingresar
+            </Button>
+            <Button
+              onClick={handleLoginSpotify}
+              fullWidth
+              variant="contained"
+              color="success"
+              sx={{ mt: 1, mb: 1 }}
+            >
+              Ingresar con Spotify
             </Button>
             <Grid container>
               <Grid item>

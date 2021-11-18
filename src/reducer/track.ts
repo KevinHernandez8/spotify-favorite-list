@@ -1,5 +1,11 @@
 import { AnyAction } from 'redux'
-import { SET_TRACKS, ALBUM_NOT_FOUND, RESET_TRACKS } from '../actions/track'
+import {
+  SET_TRACKS,
+  ALBUM_NOT_FOUND,
+  RESET_TRACKS,
+  ADD_FAVORITE_TRACK,
+  REMOVE_FAVORITE_TRACK,
+} from '../actions/track'
 import { TrackPayload } from '../models'
 
 const initialState: TrackPayload = {
@@ -27,6 +33,16 @@ export default function track(
       return {
         ...state,
         error: true,
+      }
+    case ADD_FAVORITE_TRACK:
+      state.items[action.payload].is_favorite = true
+      return {
+        ...state,
+      }
+    case REMOVE_FAVORITE_TRACK:
+      state.items[action.payload].is_favorite = false
+      return {
+        ...state,
       }
     case RESET_TRACKS:
       return {

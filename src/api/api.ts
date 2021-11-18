@@ -3,7 +3,13 @@ import store from '../store/store'
 import { Endpoints } from '../constants'
 import { doSetUserInformation } from '../actions/user'
 import { doLoadMoreAlbums, doSetAlbums } from '../actions/album'
-import { doAlbumNotFound, doSetTracks } from '../actions/track'
+import {
+  doAddFavorite,
+  doAlbumNotFound,
+  doRemoveFavoriteTrack,
+  doSetTracks,
+} from '../actions/track'
+import { doSetFavorites, doRemoveFavorite } from '../actions/favorite'
 
 const baseURL = `https://api.spotify.com/v1`
 
@@ -68,4 +74,68 @@ async function getAlbumTracks(albumId: string, token: string) {
   }
 }
 
-export { getUserInfo, getNewReleases, loadMoreReleases, getAlbumTracks }
+/**
+ * Get the favorite tracks of the user
+ * @param token access_token of the user
+ */
+async function getFavorites(token: string) {
+  const result = await axios.get(`${baseURL}/${Endpoints.favorites}`, {
+    headers: { Authorization: `Bearer ${token}` },
+    params: { market: 'CO', limit: 50, offset: 0 },
+  })
+  if (result.status === 200) {
+    store.dispatch(doSetFavorites(result.data))
+  }
+}
+
+/**
+ * Remove the track from the favorite list given the track id
+ * @param token access_token of the user
+ * @param trackId id of the track to be removed
+ * @param trackIndex index of the track to be removed from store
+ */
+async function removeFavorite(
+  token: string,
+  trackId: string,
+  trackIndex: number,
+  isSingleTrack: boolean = false
+) {
+  const result = await axios.delete(`${baseURL}/${Endpoints.favorites}`, {
+    headers: { Authorization: `Bearer ${token}` },
+    params: { ids: trackId },
+  })
+  if (result.status === 200) {
+    if (isSingleTrack) {
+      store.dispatch(doRemoveFavoriteTrack(trackIndex))
+    } else {
+      store.dispatch(doRemoveFavorite(trackIndex))
+    }
+  }
+}
+
+/**
+ * Add the track to the favorite list given the track id
+ * @param token access_token of the user
+ * @param trackId id of the track to be removed
+ * @param trackIndex index of the track to be removed from store
+ */
+async function addFavorite(token: string, trackId: string, trackIndex: number) {
+  const result = await axios.put(
+    `${baseURL}/${Endpoints.favorites}`,
+    {},
+    { headers: { Authorization: `Bearer ${token}` }, params: { ids: trackId } }
+  )
+  if (result.status === 200) {
+    store.dispatch(doAddFavorite(trackIndex))
+  }
+}
+
+export {
+  getUserInfo,
+  getNewReleases,
+  loadMoreReleases,
+  getAlbumTracks,
+  getFavorites,
+  removeFavorite,
+  addFavorite,
+}

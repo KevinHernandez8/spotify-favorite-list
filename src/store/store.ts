@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage'
 import userReducer from '../reducer/user'
 import albumReducer from '../reducer/album'
 import trackReducer from '../reducer/track'
+import favoriteReducer from '../reducer/favorite'
 
 const persistConfig = {
   key: 'root',
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   album: albumReducer,
   track: trackReducer,
+  favorite: favoriteReducer,
 })
 type RootReducer = ReturnType<typeof rootReducer>
 

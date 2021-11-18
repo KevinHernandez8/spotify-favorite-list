@@ -11,6 +11,7 @@ import Login from './containers/Login'
 import Redirect from './containers/Redirect'
 import SignUp from './containers/SignUp'
 import AlbumDetail from './containers/AlbumDetail'
+import Favorites from './containers/Favorites'
 import store from './store/store'
 import './App.css'
 
@@ -39,6 +40,7 @@ function App() {
               <Route path={Paths.HOME} element={<Home />} />
               <Route path={Paths.LOGIN} element={<Login />} />
               <Route path={Paths.REDIRECT} element={<Redirect />} />
+              <Route path={Paths.FAVORITES} element={<Favorites />} />
               <Route path={Paths.SIGNUP} element={<SignUp />} />
               <Route path={Paths.ALBUM}>
                 <Route path=":albumId" element={<AlbumDetail />} />

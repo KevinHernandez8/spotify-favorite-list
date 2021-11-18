@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-restricted-globals */
 import { CircularProgress } from '@mui/material'
 import React, { useEffect } from 'react'
