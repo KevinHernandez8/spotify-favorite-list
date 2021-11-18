@@ -4,6 +4,7 @@ export const SET_TRACKS = 'SET_TRACKS'
 export const ALBUM_NOT_FOUND = 'ALBUM_NOT_FOUND'
 export const ADD_FAVORITE_TRACK = 'ADD_FAVORITE_TRACK'
 export const REMOVE_FAVORITE_TRACK = 'REMOVE_FAVORITE_TRACK'
+export const CHECK_FAVORITES = 'CHECK_FAVORITES'
 export const RESET_TRACKS = 'RESET_TRACKS'
 
 /**
@@ -44,6 +45,17 @@ export function doAddFavorite(payload: number) {
 export function doRemoveFavoriteTrack(payload: number) {
   return {
     type: REMOVE_FAVORITE_TRACK,
+    payload,
+  }
+}
+
+/**
+ * Send to storage the liked songs information
+ * @param payload array of booleans indicating if track is liked or not
+ */
+export function doCheckFavorites(payload: boolean[]) {
+  return {
+    type: CHECK_FAVORITES,
     payload,
   }
 }

@@ -20,7 +20,12 @@ import {
 import { AccessTime, Favorite, FavoriteBorder } from '@mui/icons-material'
 import getFormatedTime from '../../utils/getFormatedTime'
 import { doResetTracks } from '../../actions/track'
-import { addFavorite, getAlbumTracks, removeFavorite } from '../../api/api'
+import {
+  addFavorite,
+  checkFavorites,
+  getAlbumTracks,
+  removeFavorite,
+} from '../../api/api'
 import { RootReducer } from '../../store/store'
 import { Header, NotFound } from '../../components'
 import { Album, Artist, Track } from '../../models'
@@ -56,6 +61,13 @@ export default function AlbumDetail() {
       dispatch(doResetTracks())
     }
   }, [])
+
+  useEffect(() => {
+    if (tracks.length > 0) {
+      const tracksIds = tracks.map((track: Track) => track.id)
+      checkFavorites(access_token, tracksIds)
+    }
+  }, [tracks])
 
   const currentAlbum: Album = useMemo(() => {
     if (albums.length > 0) {

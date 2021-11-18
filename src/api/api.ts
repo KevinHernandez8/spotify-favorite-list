@@ -6,6 +6,7 @@ import { doLoadMoreAlbums, doSetAlbums } from '../actions/album'
 import {
   doAddFavorite,
   doAlbumNotFound,
+  doCheckFavorites,
   doRemoveFavoriteTrack,
   doSetTracks,
 } from '../actions/track'
@@ -130,6 +131,22 @@ async function addFavorite(token: string, trackId: string, trackIndex: number) {
   }
 }
 
+/**
+ * Check if the track is liked by the user
+ * @param token acess_token of the user
+ * @param tracks array with id of the tracks
+ * @returns array of booleans that indicate if the track is favorite or not
+ */
+async function checkFavorites(token: string, tracks: string[]) {
+  const result = await axios.get(`${baseURL}/${Endpoints.checkFavorites}`, {
+    headers: { Authorization: `Bearer ${token}` },
+    params: { ids: tracks.join(',') },
+  })
+  if (result.status === 200) {
+    store.dispatch(doCheckFavorites(result.data))
+  }
+}
+
 export {
   getUserInfo,
   getNewReleases,
@@ -138,4 +155,5 @@ export {
   getFavorites,
   removeFavorite,
   addFavorite,
+  checkFavorites,
 }

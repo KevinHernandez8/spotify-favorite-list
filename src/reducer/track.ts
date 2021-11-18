@@ -5,8 +5,9 @@ import {
   RESET_TRACKS,
   ADD_FAVORITE_TRACK,
   REMOVE_FAVORITE_TRACK,
+  CHECK_FAVORITES,
 } from '../actions/track'
-import { TrackPayload } from '../models'
+import { Track, TrackPayload } from '../models'
 
 const initialState: TrackPayload = {
   href: '',
@@ -41,6 +42,14 @@ export default function track(
       }
     case REMOVE_FAVORITE_TRACK:
       state.items[action.payload].is_favorite = false
+      return {
+        ...state,
+      }
+    case CHECK_FAVORITES:
+      state.items.map(
+        (track: Track, index: number) =>
+          (track.is_favorite = action.payload[index])
+      )
       return {
         ...state,
       }
