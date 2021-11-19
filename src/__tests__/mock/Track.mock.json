@@ -1,0 +1,16 @@
+{
+  "artists": [],
+  "disc_number": 0,
+  "duration_ms": 0,
+  "explicit": true,
+  "external_urls": {},
+  "href": "test",
+  "id": "test",
+  "is_local": true,
+  "is_playable": true,
+  "name": "test",
+  "track_number": 0,
+  "type": "test",
+  "uri": "test",
+  "is_favorite": true
+}

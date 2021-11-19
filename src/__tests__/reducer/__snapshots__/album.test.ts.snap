@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`album reducer should handle LOAD_MORE_ALBUMS 1`] = `
+Object {
+  "href": "",
+  "items": Array [
+    "test",
+  ],
+  "limit": 0,
+  "next": "test",
+  "offset": 0,
+  "previous": "",
+  "total": 0,
+}
+`;
+
+exports[`album reducer should handle RESET_ALBUMS 1`] = `
+Object {
+  "href": "",
+  "items": Array [],
+  "limit": 0,
+  "next": "",
+  "offset": 0,
+  "previous": "",
+  "total": 0,
+}
+`;
+
+exports[`album reducer should handle SET_ALBUMS 1`] = `
+Object {
+  "href": "test",
+  "items": Array [
+    "test",
+  ],
+  "limit": 10,
+  "next": "test",
+  "offset": 10,
+  "previous": "test",
+  "total": 10,
+}
+`;
+
+exports[`album reducer should handle initial state 1`] = `
+Object {
+  "href": "",
+  "items": Array [],
+  "limit": 0,
+  "next": "",
+  "offset": 0,
+  "previous": "",
+  "total": 0,
+}
+`;

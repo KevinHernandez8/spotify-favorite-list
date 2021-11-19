@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`favorite reducer should handle REMOVE_FAVORITE 1`] = `
+Object {
+  "href": "test",
+  "items": Array [],
+  "limit": 10,
+  "next": "test",
+  "offset": 10,
+  "previous": "test",
+  "total": 9,
+}
+`;
+
+exports[`favorite reducer should handle RESET_FAVORITES 1`] = `
+Object {
+  "href": "",
+  "items": Array [],
+  "limit": 0,
+  "next": "",
+  "offset": 0,
+  "previous": "",
+  "total": 0,
+}
+`;
+
+exports[`favorite reducer should handle SET_FAVORITES 1`] = `
+Object {
+  "href": "test",
+  "items": Array [],
+  "limit": 10,
+  "next": "test",
+  "offset": 10,
+  "previous": "test",
+  "total": 10,
+}
+`;
+
+exports[`favorite reducer should handle initial state 1`] = `
+Object {
+  "href": "",
+  "items": Array [],
+  "limit": 0,
+  "next": "",
+  "offset": 0,
+  "previous": "",
+  "total": 0,
+}
+`;

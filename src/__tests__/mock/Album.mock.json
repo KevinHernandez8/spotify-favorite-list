@@ -1,0 +1,15 @@
+{
+  "album_type": "Test",
+  "artists": [],
+  "available_markets": ["Test"],
+  "external_urls": {},
+  "href": "Test",
+  "id": "Test",
+  "images": [],
+  "name": "Test",
+  "release_date": "Test",
+  "release_date_precision": "Test",
+  "total_tracks": 0,
+  "type": "Test",
+  "uri": "Test"
+}

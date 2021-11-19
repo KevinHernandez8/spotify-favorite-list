@@ -1,0 +1,36 @@
+{
+  "added_at": "2021-11-18",
+  "track": {
+    "album": {
+      "album_type": "Test",
+      "artists": [],
+      "available_markets": ["Test"],
+      "external_urls": {},
+      "href": "Test",
+      "id": "Test",
+      "images": [],
+      "name": "Test",
+      "release_date": "Test",
+      "release_date_precision": "Test",
+      "total_tracks": 0,
+      "type": "Test",
+      "uri": "Test"
+    },
+    "artists": [],
+    "disc_number": 0,
+    "duration_ms": 0,
+    "explicit": true,
+    "external_ids": {},
+    "external_urls": {},
+    "href": "Test",
+    "id": "Test",
+    "is_local": true,
+    "is_playable": true,
+    "name": "Test",
+    "popularity": 0,
+    "preview_url": "Test",
+    "track_number": 0,
+    "type": "Test",
+    "uri": "Test"
+  }
+}
